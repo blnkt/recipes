@@ -7,6 +7,13 @@
   <% end %>
 </ul>
 
+
+<form id="basic_search" action="/recipes/search" >
+  <%= render('query') %>
+  <button>Search</button>
+</form>
+
+
 <button><a href="/recipes/new">Add a New Recipe</a></button>
 
 <button><a href="/tags">Tags</a></button>

@@ -27,6 +27,7 @@ class RecipesController < ApplicationController
 
   def show
     @tags = Tag.all
+    @ratings = Rating.all
     @recipe = Recipe.find(params[:id])
     render('recipes/show.html.erb')
   end
@@ -48,5 +49,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     render('recipes/index.html.erb')
+  end
+
+  def search
+    @search = Recipe.fuzzy_search(params['query'])
+    render('recipes/search.html.erb')
   end
 end

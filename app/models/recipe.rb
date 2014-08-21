@@ -8,4 +8,8 @@ class Recipe < ActiveRecord::Base
   def self.recent
     Recipe.where('created_at >= ?', Date.today - 5)
   end
+
+  def average_rating
+    (self.ratings.ids.inject{|sum,x| sum + x })/self.ratings.ids.length
+  end
 end

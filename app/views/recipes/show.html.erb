@@ -8,16 +8,7 @@
     <li><a href= "/tags/<%= tag.id %>"><%= tag.description %></a></li>
   <% end %>
 </ul>
-
-
-<button><a href="/recipes/<%=@recipe.id%>/edit">Edit Recipe</a></button>
-
-<button><a href="/recipes/<%= @recipe.id %>"
-   data-confirm="You sure?"
-   data-method="delete"
-   rel="nofollow">Delete Recipe</a></button>
-
-<form id="add_tag" action="/recipes/<%= @recipe.id %>" method="post">
+<form id="add_tag" action="/recipes/<%= @recipe.id %>/add" method="post">
   <select form="add_tag" name="tag[id]">
      <% @tags.each do |tag| %>
        <option value="<%= tag.id %>"><%= tag.description %></option>
@@ -25,5 +16,23 @@
    </select>
 <button>Tag this Recipe!</button>
 </form>
+<br>
 
+<h4>The average rating for <%= @recipe.name %> is <%=@recipe.average_rating%></h4>
+<form id="add_ratings" action="/recipes/<%= @recipe.id %>/stars" method="post">
+  <select form="add_ratings" name="rating[id]">
+     <% @ratings.each do |rating| %>
+       <option value="<%= rating.id %>"><%= rating.star %></option>
+     <% end %>
+   </select>
+<button>Rate this Recipe!</button>
+</form>
+
+<br>
+<button><a href="/recipes/<%=@recipe.id%>/edit">Edit Recipe</a></button>
+
+<button><a href="/recipes/<%= @recipe.id %>"
+   data-confirm="You sure?"
+   data-method="delete"
+   rel="nofollow">Delete Recipe</a></button>
 <button><a href="/recipes">Main Page</a></button>
