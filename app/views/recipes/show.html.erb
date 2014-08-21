@@ -1,0 +1,12 @@
+<h1><%= @recipe.name %></h1>
+
+<p> <%= @recipe.description %> </p>
+
+<button><a href="/recipes/<%=@recipe.id%>/edit">Edit Recipe</a></button>
+
+<button><a href="/recipes/<%= @recipe.id %>"
+   data-confirm="You sure?"
+   data-method="delete"
+   rel="nofollow">Delete Recipe</a></button>
+<button>Tag this Recipe!</button>
+<button><a href="/recipes">Main Page</a></button>

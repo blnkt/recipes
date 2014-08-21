@@ -1,0 +1,12 @@
+<h1>Recipes!!!!!!!!</h1>
+
+
+<ul>
+  <% @recent.each do |recipe| %>
+    <li><a href= "/recipes/<%= recipe.id %>"><%= recipe.name %></a></li>
+  <% end %>
+</ul>
+
+<button><a href="/recipes/new">Add a New Recipe</a></button>
+
+<button>Add a New Tag</button>
