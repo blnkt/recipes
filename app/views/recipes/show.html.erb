@@ -2,11 +2,28 @@
 
 <p> <%= @recipe.description %> </p>
 
+<h4><%= @recipe.name %>'s Tags</h4>
+<ul>
+  <% @recipe.tags.each do |tag| %>
+    <li><a href= "/tags/<%= tag.id %>"><%= tag.description %></a></li>
+  <% end %>
+</ul>
+
+
 <button><a href="/recipes/<%=@recipe.id%>/edit">Edit Recipe</a></button>
 
 <button><a href="/recipes/<%= @recipe.id %>"
    data-confirm="You sure?"
    data-method="delete"
    rel="nofollow">Delete Recipe</a></button>
+
+<form id="add_tag" action="/recipes/<%= @recipe.id %>" method="post">
+  <select form="add_tag" name="tag[id]">
+     <% @tags.each do |tag| %>
+       <option value="<%= tag.id %>"><%= tag.description %></option>
+     <% end %>
+   </select>
 <button>Tag this Recipe!</button>
+</form>
+
 <button><a href="/recipes">Main Page</a></button>

@@ -1,5 +1,10 @@
 class RecipesController < ApplicationController
   def index
+    if Rating.all.empty?
+      (1..5).each do |n|
+        Rating.create(star: n)
+      end
+    end
     @recipes = Recipe.all
     @recent = Recipe.recent
     render('recipes/index.html.erb')
@@ -21,6 +26,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @tags = Tag.all
     @recipe = Recipe.find(params[:id])
     render('recipes/show.html.erb')
   end

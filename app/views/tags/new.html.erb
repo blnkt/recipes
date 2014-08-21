@@ -1,0 +1,6 @@
+<h1>Add a tag</h1>
+
+<form id='tag' action='/tags/create' method='post'>
+  <input id='tag_description' name='tag[description]' type='text' placeholder='Tag' value="<%= @tag.description %>">
+  <button>Create tag</button>
+</form>
